@@ -1,0 +1,33 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ControlaJogador : MonoBehaviour
+{
+    bool comecou;
+    bool acabou;
+    Rigidbody2D corpoJogador;
+    Vector2 forcaImpulso = new Vector2(0, 500);
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        corpoJogador = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (!comecou)
+            {
+                comecou = true;
+                corpoJogador.isKinematic = false;
+            }
+
+            corpoJogador.velocity = new Vector2(0, 0);
+            corpoJogador.AddForce(forcaImpulso);
+        }
+    }
+}
