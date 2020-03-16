@@ -38,12 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 3273364493
+    locked: 0
   - name: Walls
     uniqueID: 2115679765
+    locked: 0
+  - name: DecorationObjects
+    uniqueID: 2389410637
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Platform
     uniqueID: 3458201643
+    locked: 0
+  - name: DecorationFirstPlane
+    uniqueID: 1936394933
     locked: 0
