@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -12,14 +10,15 @@ public class PlayerScript : MonoBehaviour
     public float JumpForce;
 
     public bool Grounded;
+    public LayerMask WhatIsGround;
+
     public bool Attacking;
     public bool LookLeft;
     public int IdAnimation;
 
-    private float h, v;
+    private float horizontal, vertical;
 
     public Collider2D Standing, Crounching;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,29 +29,29 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
-        if (h > 0 && LookLeft && !Attacking)
+        if (horizontal > 0 && LookLeft && !Attacking)
         {
             Flip();
         }
-        else if (h < 0 && !LookLeft && !Attacking)
+        else if (horizontal < 0 && !LookLeft && !Attacking)
         {
             Flip();
         }
 
 
-        if (v < 0)
+        if (vertical < 0)
         {
             IdAnimation = 2;
             if (Grounded)
             {
-                h = 0;
+                horizontal = 0;
             }
 
         }
-        else if (!h.Equals(0))
+        else if (!horizontal.Equals(0))
         {
             IdAnimation = 1;
         }
@@ -61,7 +60,7 @@ public class PlayerScript : MonoBehaviour
             IdAnimation = 0;
         }
 
-        if (Input.GetButtonDown("Fire1") && v >= 0 && !Attacking)
+        if (Input.GetButtonDown("Fire1") && vertical >= 0 && !Attacking)
         {
             playerAnimator.SetTrigger("atack");
         }
@@ -73,14 +72,15 @@ public class PlayerScript : MonoBehaviour
 
         if (Attacking && Grounded)
         {
-            h = 0;
+            horizontal = 0;
         }
 
-        if(v < 0 && Grounded)
+        if (vertical < 0 && Grounded)
         {
             Crounching.enabled = true;
             Standing.enabled = false;
-        } else
+        }
+        else
         {
             Crounching.enabled = false;
             Standing.enabled = true;
@@ -93,8 +93,8 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Grounded = Physics2D.OverlapCircle(GroundCheck.position, 0.02f);
-        playerRB2D.velocity = new Vector2(h * Speed, playerRB2D.velocity.y);
+        Grounded = Physics2D.OverlapCircle(GroundCheck.position, 0.02f, WhatIsGround);
+        playerRB2D.velocity = new Vector2(horizontal * Speed, playerRB2D.velocity.y);
     }
 
     private void Flip()
@@ -115,4 +115,23 @@ public class PlayerScript : MonoBehaviour
                 break;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Box"))
+        {
+
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+
+    }
+
 }
