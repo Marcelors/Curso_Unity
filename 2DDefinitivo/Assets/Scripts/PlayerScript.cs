@@ -18,6 +18,11 @@ public class PlayerScript : MonoBehaviour
 
     private float horizontal, vertical;
 
+    public Transform Hand;
+    public LayerMask Interaction;
+    public GameObject InteractionObject;
+    private Vector3 dir = Vector3.right;
+
     public Collider2D Standing, Crounching;
     // Start is called before the first frame update
     void Start()
@@ -60,9 +65,14 @@ public class PlayerScript : MonoBehaviour
             IdAnimation = 0;
         }
 
-        if (Input.GetButtonDown("Fire1") && vertical >= 0 && !Attacking)
+        if (Input.GetButtonDown("Fire1") && vertical >= 0 && !Attacking && InteractionObject == null)
         {
             playerAnimator.SetTrigger("atack");
+        }
+
+        if (Input.GetButtonDown("Fire1") && vertical >= 0 && !Attacking && InteractionObject != null)
+        {
+            InteractionObject.SendMessage(nameof(ChestScript.Interaction), SendMessageOptions.DontRequireReceiver);
         }
 
         if (Input.GetButtonDown("Jump") && Grounded && !Attacking)
@@ -89,18 +99,25 @@ public class PlayerScript : MonoBehaviour
         playerAnimator.SetBool("grounded", Grounded);
         playerAnimator.SetInteger("idAnimation", IdAnimation);
         playerAnimator.SetFloat("speedY", playerRB2D.velocity.y);
+
+
     }
 
     private void FixedUpdate()
     {
-        Grounded = Physics2D.OverlapCircle(GroundCheck.position, 0.02f, WhatIsGround);
+        Grounded = Physics2D.OverlapCircle(GroundCheck.position, 0.02f, layerMask: WhatIsGround);
         playerRB2D.velocity = new Vector2(horizontal * Speed, playerRB2D.velocity.y);
+
+        Interact();
     }
 
     private void Flip()
     {
         LookLeft = !LookLeft;
-        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        float x = transform.localScale.x * -1;
+        transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+
+        dir.x = x;
     }
 
     private void Atack(int atk)
@@ -116,22 +133,17 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Interact()
     {
-        if (collision.collider.CompareTag("Box"))
+        RaycastHit2D hit = Physics2D.Raycast(Hand.position, dir, 0.2f, Interaction);
+        Debug.DrawRay(Hand.position, dir * 0.2f, Color.red);
+        if (hit == true)
         {
-
+            InteractionObject = hit.collider.gameObject;
+        }
+        else
+        {
+            InteractionObject = null;
         }
     }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-
-    }
-
 }
