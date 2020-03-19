@@ -24,11 +24,18 @@ public class PlayerScript : MonoBehaviour
     private Vector3 dir = Vector3.right;
 
     public Collider2D Standing, Crounching;
+
+    public GameObject[] Weapons;
     // Start is called before the first frame update
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         playerRB2D = GetComponent<Rigidbody2D>();
+
+        foreach (var weapon in Weapons)
+        {
+            weapon.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -126,6 +133,7 @@ public class PlayerScript : MonoBehaviour
         {
             case 0:
                 Attacking = false;
+                Weapons[2].SetActive(false);
                 break;
             case 1:
                 Attacking = true;
@@ -145,5 +153,15 @@ public class PlayerScript : MonoBehaviour
         {
             InteractionObject = null;
         }
+    }
+
+    private void WeaponController(int id)
+    {
+        foreach (var weapon in Weapons)
+        {
+            weapon.SetActive(false);
+        }
+
+        Weapons[id].SetActive(true);
     }
 }
