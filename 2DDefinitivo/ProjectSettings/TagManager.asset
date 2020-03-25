@@ -58,3 +58,6 @@ TagManager:
   - name: DecorationFirstPlane
     uniqueID: 1936394933
     locked: 0
+  - name: HUD
+    uniqueID: 3099968353
+    locked: 0

@@ -1,10 +1,17 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyDamageControl : MonoBehaviour
 {
+    [Header("Configuration Life")]
+    public float EnemyLife;
+    public float CurrentLife;
+    public GameObject Bar;
+    public Transform BarHP;
+    private float percLife;
+
     public float[] DamageHelp;
+
     private GameController gameController;
     public GameObject KnockForcePrefab;
     public Transform KnockPosition;
@@ -12,9 +19,15 @@ public class EnemyDamageControl : MonoBehaviour
     private PlayerScript playerScript;
     private float kx;
     public bool LookLeft, PlayerLeft;
+
+    private SpriteRenderer spriteRenderer;
+    public Color[] CharacterColors;
+
+    private bool isHit;
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         gameController = FindObjectOfType(typeof(GameController)) as GameController;
         playerScript = FindObjectOfType(typeof(PlayerScript)) as PlayerScript;
 
@@ -22,7 +35,16 @@ public class EnemyDamageControl : MonoBehaviour
         {
             float x = transform.localScale.x * -1;
             transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+            float barX = Bar.transform.localScale.x * -1;
+            Bar.transform.localScale = new Vector3(barX, Bar.transform.localScale.y, Bar.transform.localScale.z);
         }
+
+        spriteRenderer.color = CharacterColors[0];
+        Bar.SetActive(false);
+        BarHP.localScale = new Vector3(1, 1, 1);
+
+        CurrentLife = EnemyLife;
+        percLife = 1;
     }
 
     // Update is called once per frame
@@ -63,14 +85,38 @@ public class EnemyDamageControl : MonoBehaviour
         switch (collision.tag)
         {
             case "Weapon":
-                var weaponInfo = collision.gameObject.GetComponent<WeaponInfo>();
-                float damage = weaponInfo.Damege;
-                int damageType = weaponInfo.DamegeType;
-                float damageTaken = damage + (damage * (DamageHelp[damageType] / 100));
-                print("Tomei dano");
+                if (!isHit)
+                {
+                    Bar.SetActive(true);
+                    isHit = true;
+                    var weaponInfo = collision.gameObject.GetComponent<WeaponInfo>();
+                    float damage = weaponInfo.Damege;
+                    int damageType = weaponInfo.DamegeType;
+                    float damageTaken = damage + (damage * (DamageHelp[damageType] / 100));
 
-                GameObject knockTemp = Instantiate(KnockForcePrefab, KnockPosition.position, KnockPosition.localRotation);
-                Destroy(knockTemp, 0.02f);
+                    CurrentLife -= damageTaken;
+                    percLife = CurrentLife / EnemyLife;
+                    if (percLife < 0)
+                    {
+                        percLife = 0;
+                    }
+
+                    BarHP.localScale = new Vector3(percLife, 1, 1);
+
+                    if (CurrentLife <= 0)
+                    {
+
+                        Destroy(this.gameObject);
+                    }
+                    else
+                    {
+                        GameObject knockTemp = Instantiate(KnockForcePrefab, KnockPosition.position, KnockPosition.localRotation);
+                        Destroy(knockTemp, 0.02f);
+
+                        StartCoroutine(nameof(EnemyDamageControl.Invulnerable));
+                    }
+
+                }
                 break;
         }
     }
@@ -80,5 +126,24 @@ public class EnemyDamageControl : MonoBehaviour
         LookLeft = !LookLeft;
         float x = transform.localScale.x * -1;
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+        float barX = Bar.transform.localScale.x * -1;
+        Bar.transform.localScale = new Vector3(barX, Bar.transform.localScale.y, Bar.transform.localScale.z);
+    }
+
+    IEnumerator Invulnerable()
+    {
+        spriteRenderer.color = CharacterColors[1];
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = CharacterColors[0];
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = CharacterColors[1];
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = CharacterColors[0];
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = CharacterColors[1];
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = CharacterColors[0];
+        isHit = false;
+        Bar.SetActive(false);
     }
 }
