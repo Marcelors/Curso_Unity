@@ -7,6 +7,7 @@ public class EnemyDamageControl : MonoBehaviour
     public float EnemyLife;
     public float CurrentLife;
     public GameObject Bar;
+    public GameObject DamageTxtPrefab;
     public Transform BarHP;
     private float percLife;
 
@@ -90,7 +91,7 @@ public class EnemyDamageControl : MonoBehaviour
                     Bar.SetActive(true);
                     isHit = true;
                     var weaponInfo = collision.gameObject.GetComponent<WeaponInfo>();
-                    float damage = weaponInfo.Damege;
+                    float damage = Random.Range(weaponInfo.DamegeMin, weaponInfo.DamegeMax + 1);
                     int damageType = weaponInfo.DamegeType;
                     float damageTaken = damage + (damage * (DamageHelp[damageType] / 100));
 
@@ -110,6 +111,16 @@ public class EnemyDamageControl : MonoBehaviour
                     }
                     else
                     {
+                        GameObject damageTemp = Instantiate(DamageTxtPrefab, transform.position, transform.localRotation);
+                        damageTemp.GetComponent<TextMesh>().text = damageTaken.ToString();
+                        damageTemp.GetComponent<MeshRenderer>().sortingLayerName = "HUD";
+                        int forcaX = 50;
+                        if(PlayerLeft == false){
+                            forcaX *= -1;
+                        }
+                        damageTemp.GetComponent<Rigidbody2D>().AddForce(new Vector3(forcaX, 200, 0));
+                        Destroy(damageTemp, 1f);
+
                         GameObject knockTemp = Instantiate(KnockForcePrefab, KnockPosition.position, KnockPosition.localRotation);
                         Destroy(knockTemp, 0.02f);
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponInfo : MonoBehaviour
 {
-    public int Damege;
+    public int DamegeMin;
+    public int DamegeMax;
     public int DamegeType;
 }
