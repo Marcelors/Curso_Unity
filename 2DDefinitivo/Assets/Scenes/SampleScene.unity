@@ -6754,7 +6754,7 @@ MonoBehaviour:
   EnemyLife: 11
   CurrentLife: 0
   Bar: {fileID: 19328638}
-  DamageTxtPrefab: {fileID: 4377846526345123096, guid: 6f1167512697af4439f2c77c61a2d6ed,
+  DamageTxtPrefab: {fileID: 4510434565368249925, guid: 59d09a72b769821498c304b6cbda185e,
     type: 3}
   BarHP: {fileID: 243917361}
   DamageHelp:

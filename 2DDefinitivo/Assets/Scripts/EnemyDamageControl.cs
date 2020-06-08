@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class EnemyDamageControl : MonoBehaviour
 {
@@ -112,8 +113,8 @@ public class EnemyDamageControl : MonoBehaviour
                     else
                     {
                         GameObject damageTemp = Instantiate(DamageTxtPrefab, transform.position, transform.localRotation);
-                        damageTemp.GetComponent<TextMesh>().text = damageTaken.ToString();
-                        damageTemp.GetComponent<MeshRenderer>().sortingLayerName = "HUD";
+                        damageTemp.GetComponentInChildren<TextMeshPro>().text = damageTaken.ToString();
+                        damageTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";
                         int forcaX = 50;
                         if(PlayerLeft == false){
                             forcaX *= -1;
