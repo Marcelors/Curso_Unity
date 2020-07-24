@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public string[] DamageTypes;
+    public GameObject[] FxDano;
 
     // Start is called before the first frame update
     void Start()

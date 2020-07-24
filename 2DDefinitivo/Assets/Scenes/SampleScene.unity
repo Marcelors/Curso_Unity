@@ -3892,6 +3892,10 @@ MonoBehaviour:
   - Normal
   - Fire
   - Water
+  FxDano:
+  - {fileID: 81955342401328631, guid: 09b826836f9aaf04a9379fc5f65a978d, type: 3}
+  - {fileID: 8426499962282578467, guid: 77389671a92f23140a00b1c3f47e8f78, type: 3}
+  - {fileID: 0}
 --- !u!1 &587892482
 GameObject:
   m_ObjectHideFlags: 0
@@ -6639,6 +6643,7 @@ GameObject:
   - component: {fileID: 871873876}
   - component: {fileID: 871873877}
   - component: {fileID: 871873878}
+  - component: {fileID: 871873879}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
@@ -6807,6 +6812,25 @@ CircleCollider2D:
   m_Offset: {x: 0.008485988, y: -0.26442266}
   serializedVersion: 2
   m_Radius: 0.2087181
+--- !u!95 &871873879
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871873872}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bee9b854853991f4ba875897cf9d8267, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &908693886
 GameObject:
   m_ObjectHideFlags: 0
@@ -8969,7 +8993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1306554525
 Transform:
   m_ObjectHideFlags: 0

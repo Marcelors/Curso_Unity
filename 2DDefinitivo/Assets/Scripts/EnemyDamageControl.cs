@@ -25,13 +25,17 @@ public class EnemyDamageControl : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Color[] CharacterColors;
 
+    private Animator animator;
+
     private bool isHit;
+    private bool died;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         gameController = FindObjectOfType(typeof(GameController)) as GameController;
         playerScript = FindObjectOfType(typeof(PlayerScript)) as PlayerScript;
+        animator = GetComponent<Animator>();
 
         if (LookLeft == true)
         {
@@ -80,10 +84,17 @@ public class EnemyDamageControl : MonoBehaviour
             kx = KnockX;
         }
         KnockPosition.localPosition = new Vector3(kx, KnockPosition.localPosition.y, 0);
+
+        animator.SetBool("grounded", true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (died)
+        {
+            return;
+        }
+
         switch (collision.tag)
         {
             case "Weapon":
@@ -92,6 +103,9 @@ public class EnemyDamageControl : MonoBehaviour
                     Bar.SetActive(true);
                     isHit = true;
                     var weaponInfo = collision.gameObject.GetComponent<WeaponInfo>();
+
+                    animator.SetTrigger("hit");
+
                     float damage = Random.Range(weaponInfo.DamegeMin, weaponInfo.DamegeMax + 1);
                     int damageType = weaponInfo.DamegeType;
                     float damageTaken = damage + (damage * (DamageHelp[damageType] / 100));
@@ -107,16 +121,22 @@ public class EnemyDamageControl : MonoBehaviour
 
                     if (CurrentLife <= 0)
                     {
-
-                        Destroy(this.gameObject);
+                        died = true;
+                        animator.SetInteger("idAnimation", 3);
+                        Destroy(this.gameObject, 2);
                     }
                     else
                     {
                         GameObject damageTemp = Instantiate(DamageTxtPrefab, transform.position, transform.localRotation);
                         damageTemp.GetComponentInChildren<TextMeshPro>().text = damageTaken.ToString();
                         damageTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";
+
+                        GameObject fxTemp = Instantiate(gameController.FxDano[damageType], transform.position, transform.localRotation);
+                        Destroy(fxTemp, 1);
+
                         int forcaX = 50;
-                        if(PlayerLeft == false){
+                        if (PlayerLeft == false)
+                        {
                             forcaX *= -1;
                         }
                         damageTemp.GetComponent<Rigidbody2D>().AddForce(new Vector3(forcaX, 200, 0));
