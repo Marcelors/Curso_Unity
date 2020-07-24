@@ -27,6 +27,10 @@ public class EnemyDamageControl : MonoBehaviour
 
     private Animator animator;
 
+
+    public Transform GroundedCheck;
+    public LayerMask WhatIsGround;
+
     private bool isHit;
     private bool died;
     // Start is called before the first frame update
@@ -123,7 +127,7 @@ public class EnemyDamageControl : MonoBehaviour
                     {
                         died = true;
                         animator.SetInteger("idAnimation", 3);
-                        Destroy(this.gameObject, 2);
+                        StartCoroutine(nameof(EnemyDamageControl.Loot));
                     }
                     else
                     {
@@ -160,6 +164,17 @@ public class EnemyDamageControl : MonoBehaviour
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
         float barX = Bar.transform.localScale.x * -1;
         Bar.transform.localScale = new Vector3(barX, Bar.transform.localScale.y, Bar.transform.localScale.z);
+    }
+
+    private IEnumerator Loot()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject fxMorte = Instantiate(gameController.FxMorte, GroundedCheck.transform.position, transform.rotation);
+        yield return new WaitForSeconds(0.5f);
+        spriteRenderer.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        Destroy(fxMorte);
+        Destroy(this.gameObject);
     }
 
     IEnumerator Invulnerable()
