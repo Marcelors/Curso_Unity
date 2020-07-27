@@ -164,4 +164,14 @@ public class PlayerScript : MonoBehaviour
 
         Weapons[id].SetActive(true);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Coletavel":
+                Destroy(collision.gameObject);
+                break;
+        }
+    }
 }

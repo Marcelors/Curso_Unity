@@ -34,6 +34,9 @@ public class EnemyDamageControl : MonoBehaviour
     private bool isHit;
     private bool died;
     // Start is called before the first frame update
+
+    [Header("Configuração de Loot")]
+    public GameObject Loots;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -172,6 +175,18 @@ public class EnemyDamageControl : MonoBehaviour
         GameObject fxMorte = Instantiate(gameController.FxMorte, GroundedCheck.transform.position, transform.rotation);
         yield return new WaitForSeconds(0.5f);
         spriteRenderer.enabled = false;
+
+        int qtdMoedas = Random.Range(1, 5);
+
+        for (int l = 0; l < qtdMoedas; l++)
+        {
+            GameObject lootTemp = Instantiate(Loots, transform.position, transform.localRotation);
+            lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-25, 25), 75));
+            yield return new WaitForSeconds(0.1f);
+        }
+
+
+
         yield return new WaitForSeconds(0.5f);
         Destroy(fxMorte);
         Destroy(this.gameObject);

@@ -6781,6 +6781,7 @@ MonoBehaviour:
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  Loots: {fileID: 6296280597714835963, guid: c43737fa56ec7f04aa4f44d8aaecb48c, type: 3}
 --- !u!50 &871873877
 Rigidbody2D:
   serializedVersion: 4
