@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     public GameObject[] FxDano;
     public GameObject FxMorte;
 
+    public int Gold; //Armazena a quantidade de ouro que coletamos
+
     // Start is called before the first frame update
     void Start()
     {

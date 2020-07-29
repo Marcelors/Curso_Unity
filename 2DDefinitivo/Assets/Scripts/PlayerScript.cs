@@ -2,6 +2,8 @@
 
 public class PlayerScript : MonoBehaviour
 {
+    private GameController gameController;
+
     private Animator playerAnimator;
     private Rigidbody2D playerRB2D;
 
@@ -29,6 +31,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = FindObjectOfType(typeof(GameController)) as GameController;
+
         playerAnimator = GetComponent<Animator>();
         playerRB2D = GetComponent<Rigidbody2D>();
 
@@ -165,13 +169,17 @@ public class PlayerScript : MonoBehaviour
         Weapons[id].SetActive(true);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.tag)
         {
             case "Coletavel":
-                Destroy(collision.gameObject);
+                collision.gameObject.SendMessage("Coletar", SendMessageOptions.DontRequireReceiver);
                 break;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
     }
 }
