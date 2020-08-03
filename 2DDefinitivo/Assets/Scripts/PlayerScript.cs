@@ -28,9 +28,14 @@ public class PlayerScript : MonoBehaviour
     public Collider2D Standing, Crounching;
 
     public GameObject[] Weapons;
+
+    public int VidaMax;
+    public int VidaAtual;
+
     // Start is called before the first frame update
     void Start()
     {
+        VidaAtual = VidaMax;
         gameController = FindObjectOfType(typeof(GameController)) as GameController;
 
         playerAnimator = GetComponent<Animator>();
