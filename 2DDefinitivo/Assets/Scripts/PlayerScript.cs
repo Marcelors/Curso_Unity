@@ -32,6 +32,8 @@ public class PlayerScript : MonoBehaviour
     public int VidaMax;
     public int VidaAtual;
 
+    public GameObject BallomAlerta;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,7 +90,13 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && vertical >= 0 && !Attacking && InteractionObject != null)
         {
+            if (InteractionObject.CompareTag("Door"))
+            {
+                InteractionObject.GetComponent<Door>().tPlayer = this.transform;
+            }
             InteractionObject.SendMessage(nameof(ChestScript.Interaction), SendMessageOptions.DontRequireReceiver);
+
+
         }
 
         if (Input.GetButtonDown("Jump") && Grounded && !Attacking)
@@ -157,10 +165,12 @@ public class PlayerScript : MonoBehaviour
         if (hit == true)
         {
             InteractionObject = hit.collider.gameObject;
+            BallomAlerta.SetActive(true);
         }
         else
         {
             InteractionObject = null;
+            BallomAlerta.SetActive(false);
         }
     }
 

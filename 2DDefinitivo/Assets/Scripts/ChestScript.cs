@@ -25,6 +25,7 @@ public class ChestScript : MonoBehaviour
             spriteRender.sprite = ImagensObject[1];
             Collider.enabled = false;
             StartCoroutine(nameof(ChestScript.Loot));
+            GetComponent<Collider2D>().enabled = false;
         }
 
 

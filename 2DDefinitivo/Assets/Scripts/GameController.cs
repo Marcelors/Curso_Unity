@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     public GameObject[] FxDano;
     public GameObject FxMorte;
 
+    private Fade fade;
+
     public int Gold;
 
     public TextMeshProUGUI GoldTXT;
@@ -16,7 +18,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        fade = FindObjectOfType(typeof(Fade)) as Fade;
+        fade.FadeOut();
     }
 
     // Update is called once per frame
