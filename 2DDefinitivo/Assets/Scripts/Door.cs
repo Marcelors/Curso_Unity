@@ -5,8 +5,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private Fade fade;
+    private PlayerScript playerScript;
 
-    public Transform tPlayer;
     public Transform Destino;
 
     public bool Escuro;
@@ -16,6 +16,7 @@ public class Door : MonoBehaviour
     void Start()
     {
         fade = FindObjectOfType(typeof(Fade)) as Fade;
+        playerScript = FindObjectOfType(typeof(PlayerScript)) as PlayerScript;
     }
 
     public void Interaction()
@@ -27,17 +28,17 @@ public class Door : MonoBehaviour
     {
         fade.FadeIn();
         yield return new WaitWhile(() => fade.fume.color.a < 0.9f);
-        tPlayer.gameObject.SetActive(false);
+        playerScript.gameObject.SetActive(false);
         if (Escuro)
         {
-            tPlayer.gameObject.GetComponent<SpriteRenderer>().material = Luz2D;
+            playerScript.ChangeMaterial(Luz2D);
         } else
         {
-            tPlayer.gameObject.GetComponent<SpriteRenderer>().material = Padrao2D;
+            playerScript.ChangeMaterial(Padrao2D);
         }
-        tPlayer.position = Destino.position;
+        playerScript.transform.position = Destino.position;
         yield return new WaitForSeconds(0.5f);
-        tPlayer.gameObject.SetActive(true);
+        playerScript.gameObject.SetActive(true);
         fade.FadeOut();
     }
 }

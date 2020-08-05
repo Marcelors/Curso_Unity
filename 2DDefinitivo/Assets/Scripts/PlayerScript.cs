@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 
     private Animator playerAnimator;
     private Rigidbody2D playerRB2D;
+    private SpriteRenderer spriteRenderer;
 
     public Transform GroundCheck;
     public float Speed;
@@ -42,6 +43,7 @@ public class PlayerScript : MonoBehaviour
 
         playerAnimator = GetComponent<Animator>();
         playerRB2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         foreach (var weapon in Weapons)
         {
@@ -90,13 +92,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && vertical >= 0 && !Attacking && InteractionObject != null)
         {
-            if (InteractionObject.CompareTag("Door"))
-            {
-                InteractionObject.GetComponent<Door>().tPlayer = this.transform;
-            }
             InteractionObject.SendMessage(nameof(ChestScript.Interaction), SendMessageOptions.DontRequireReceiver);
-
-
         }
 
         if (Input.GetButtonDown("Jump") && Grounded && !Attacking)
@@ -196,5 +192,15 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+    }
+
+    public void ChangeMaterial(Material novoMaterial)
+    {
+        spriteRenderer.material = novoMaterial;
+
+        foreach (var item in Weapons)
+        {
+            item.GetComponent<SpriteRenderer>().material = novoMaterial;
+        }
     }
 }
