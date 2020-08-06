@@ -15,6 +15,14 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI GoldTXT;
     //Armazena a quantidade de ouro que coletamos
 
+    [Header("Banco de Dados Armas")]
+    public Sprite[] SpriteArmas1;
+    public Sprite[] SpriteArmas2;
+    public Sprite[] SpriteArmas3;
+    public int[] danoMinArma;
+    public int[] danoMaxArma;
+    public int[] tipoDano;
+
     // Start is called before the first frame update
     void Start()
     {

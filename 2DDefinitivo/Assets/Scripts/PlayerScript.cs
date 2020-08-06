@@ -28,6 +28,8 @@ public class PlayerScript : MonoBehaviour
 
     public Collider2D Standing, Crounching;
 
+    public int IdArma;
+    public int IdArmaAtual;
     public GameObject[] Weapons;
 
     public int VidaMax;
@@ -49,6 +51,8 @@ public class PlayerScript : MonoBehaviour
         {
             weapon.SetActive(false);
         }
+
+        trocarArma(0);
     }
 
     // Update is called once per frame
@@ -131,6 +135,14 @@ public class PlayerScript : MonoBehaviour
         Interact();
     }
 
+    private void LateUpdate()
+    {
+        if(IdArma != IdArmaAtual)
+        {
+            trocarArma(IdArma);
+        }
+    }
+
     private void Flip()
     {
         LookLeft = !LookLeft;
@@ -202,5 +214,28 @@ public class PlayerScript : MonoBehaviour
         {
             item.GetComponent<SpriteRenderer>().material = novoMaterial;
         }
+    }
+
+    public void trocarArma(int id)
+    {
+        IdArma = id;
+        Weapons[0].GetComponent<SpriteRenderer>().sprite = gameController.SpriteArmas1[IdArma];
+        Weapons[0].GetComponent<WeaponInfo>().DamegeMin = gameController.danoMinArma[IdArma];
+        Weapons[0].GetComponent<WeaponInfo>().DamegeMax = gameController.danoMaxArma[IdArma];
+        Weapons[0].GetComponent<WeaponInfo>().DamegeType = gameController.tipoDano[IdArma];
+
+        Weapons[1].GetComponent<SpriteRenderer>().sprite = gameController.SpriteArmas2[IdArma];
+        var weapon1 = Weapons[1].GetComponent<WeaponInfo>();
+        weapon1.DamegeMin = gameController.danoMinArma[IdArma];
+        weapon1.DamegeMax = gameController.danoMaxArma[IdArma];
+        weapon1.DamegeType = gameController.tipoDano[IdArma];
+
+        Weapons[2].GetComponent<SpriteRenderer>().sprite = gameController.SpriteArmas3[IdArma];
+        var weapon2 = Weapons[2].GetComponent<WeaponInfo>();
+        weapon2.DamegeMin = gameController.danoMinArma[IdArma];
+        weapon2.DamegeMax = gameController.danoMaxArma[IdArma];
+        weapon2.DamegeType = gameController.tipoDano[IdArma];
+
+        IdArmaAtual = IdArma;
     }
 }

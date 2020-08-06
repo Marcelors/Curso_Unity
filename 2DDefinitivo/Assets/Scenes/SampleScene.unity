@@ -7779,6 +7779,21 @@ MonoBehaviour:
   FxMorte: {fileID: 3340412211156273192, guid: 6673920279c96c8468c14797e3545a0a, type: 3}
   Gold: 0
   GoldTXT: {fileID: 307486497}
+  SpriteArmas1:
+  - {fileID: 4942803658038726614, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
+  - {fileID: -9004990608046106943, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
+  - {fileID: -4470654044548505675, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
+  SpriteArmas2:
+  - {fileID: 6123003023063038561, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
+  - {fileID: 8289387723579576647, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
+  - {fileID: 788015303910585071, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
+  SpriteArmas3:
+  - {fileID: 4978276593797209138, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
+  - {fileID: -8675077286395491812, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
+  - {fileID: 7441372264213655823, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
+  danoMinArma: 010000000300000005000000
+  danoMaxArma: 03000000060000000a000000
+  tipoDano: 000000000100000000000000
 --- !u!1 &587892482
 GameObject:
   m_ObjectHideFlags: 0
