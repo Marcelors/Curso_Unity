@@ -378,9 +378,11 @@ GameObject:
   - component: {fileID: 6867966222528699278}
   - component: {fileID: 6867966222528699282}
   - component: {fileID: 6867966222528699281}
+  - component: {fileID: 1361930262}
+  - component: {fileID: 271142290}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,6 +504,8 @@ MonoBehaviour:
   InteractionObject: {fileID: 0}
   Standing: {fileID: 6867966222528699278}
   Crounching: {fileID: 6867966222528699282}
+  IdArma: 0
+  IdArmaAtual: 0
   Weapons:
   - {fileID: 5851979442413927600}
   - {fileID: 7786628405870072875}
@@ -598,6 +602,38 @@ CircleCollider2D:
   m_Offset: {x: 0.030000005, y: -0.26413688}
   serializedVersion: 2
   m_Radius: 0.21312305
+--- !u!114 &1361930262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867966222528699273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f8c6d7ed86df84f92a49c55b21b8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+  spriteSheetName: Barbarian2
+  loadedSpriteSheetName: 
+  isPlayer: 1
+--- !u!114 &271142290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867966222528699273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f8c6d7ed86df84f92a49c55b21b8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+  spriteSheetName: Barbarian2
+  loadedSpriteSheetName: 
+  isPlayer: 1
 --- !u!1 &6867966223121459461
 GameObject:
   m_ObjectHideFlags: 0

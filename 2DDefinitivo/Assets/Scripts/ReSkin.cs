@@ -5,16 +5,26 @@ using System.Linq;
 
 public class ReSkin : MonoBehaviour
 {
+    private GameController gameController;
+
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
     public string spriteSheetName;
     public string loadedSpriteSheetName;
+    public bool isPlayer = false;
 
     private Dictionary<string, Sprite> spriteSheet;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameController = FindObjectOfType(typeof(GameController)) as GameController;
+
+        if (isPlayer)
+        {
+            spriteSheetName = gameController.spriteSheetName[gameController.idPersonagem].name;
+        }
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         LoadSpriteSheet();
     }
@@ -27,10 +37,21 @@ public class ReSkin : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(loadedSpriteSheetName != spriteSheetName)
+        if (isPlayer)
+        {
+            if(gameController.idPersonagem != gameController.idPersonagemAtual)
+            {
+                spriteSheetName = gameController.spriteSheetName[gameController.idPersonagem].name;
+                gameController.idPersonagemAtual = gameController.idPersonagem;
+            }
+        }
+
+        if (loadedSpriteSheetName != spriteSheetName)
         {
             LoadSpriteSheet();
         }
+
+  
 
         spriteRenderer.sprite = spriteSheet[spriteRenderer.sprite.name];
     }

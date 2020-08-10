@@ -11,6 +11,10 @@ public class Fade : MonoBehaviour
     public float step;
 
     private bool emTransicao;
+    private void Start()
+    {
+        FadeOut();
+    }
 
     public void FadeIn()
     {
@@ -40,6 +44,7 @@ public class Fade : MonoBehaviour
 
     IEnumerator fadeOutRotine()
     {
+        yield return new WaitForSeconds(0.5f);
         for (float i = 0; i <= 1; i += step)
         {
             fume.color = Color.Lerp(CorTransicao[1], CorTransicao[0], i);

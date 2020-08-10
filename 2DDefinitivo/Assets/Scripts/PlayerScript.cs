@@ -40,8 +40,14 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VidaAtual = VidaMax;
+ 
         gameController = FindObjectOfType(typeof(GameController)) as GameController;
+
+        VidaMax = gameController.vidaMaxima;
+        IdArma = gameController.idArma;
+        
+
+        VidaAtual = VidaMax;
 
         playerAnimator = GetComponent<Animator>();
         playerRB2D = GetComponent<Rigidbody2D>();

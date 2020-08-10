@@ -8,12 +8,20 @@ public class GameController : MonoBehaviour
     public GameObject[] FxDano;
     public GameObject FxMorte;
 
-    private Fade fade;
-
     public int Gold;
 
     public TextMeshProUGUI GoldTXT;
     //Armazena a quantidade de ouro que coletamos
+
+    [Header("Player")]
+    public int idPersonagem;
+    public int idPersonagemAtual;
+    public int vidaMaxima;
+    public int idArma;
+
+    [Header("Banco de Personagem")]
+    public string[] nomePersonagem;
+    public Texture[] spriteSheetName;
 
     [Header("Banco de Dados Armas")]
     public Sprite[] SpriteArmas1;
@@ -23,12 +31,16 @@ public class GameController : MonoBehaviour
     public int[] danoMaxArma;
     public int[] tipoDano;
 
+
+
+
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        fade = FindObjectOfType(typeof(Fade)) as Fade;
-        fade.FadeOut();
+        DontDestroyOnLoad(this.gameObject);
     }
+
+
 
     // Update is called once per frame
     void Update()

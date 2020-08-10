@@ -172,7 +172,7 @@ Transform:
   - {fileID: 356426875}
   - {fileID: 1901031710}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &15150790
 Tilemap:
@@ -308,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139383371
 GameObject:
@@ -3011,7 +3011,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &243917360
 GameObject:
@@ -7752,9 +7752,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.266989, y: 1.0591313, z: -2.1406693}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1568798177}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &565874680
 MonoBehaviour:
@@ -7779,6 +7780,33 @@ MonoBehaviour:
   FxMorte: {fileID: 3340412211156273192, guid: 6673920279c96c8468c14797e3545a0a, type: 3}
   Gold: 0
   GoldTXT: {fileID: 307486497}
+  idPersonagem: 1
+  vidaMaxima: 10
+  idArma: 0
+  nomePersonagem:
+  - Barbaro
+  - Barbaro 2
+  - Dwarf
+  - Dwarf 2
+  - Elf female
+  - Elf Male
+  - goblin
+  - Knight
+  - Peasant
+  - Soldier
+  - Wizard
+  spriteSheetName:
+  - {fileID: 2800000, guid: 4e67f311968990848bcde2ef858f4163, type: 3}
+  - {fileID: 2800000, guid: 1614b0e3a81a08e49974efa377641377, type: 3}
+  - {fileID: 2800000, guid: c2929e3a54a241c4ca7b1afaf14135ee, type: 3}
+  - {fileID: 2800000, guid: f6250fc7f2c364f4f8020ffe217ccc52, type: 3}
+  - {fileID: 2800000, guid: e9d49c3635bfc3243a77f9575dfbc22e, type: 3}
+  - {fileID: 2800000, guid: ae8b77f1b5ba5fd4cbdc35f0dcf9ef55, type: 3}
+  - {fileID: 2800000, guid: 5848538af864d405b8504f00b82c4c05, type: 3}
+  - {fileID: 2800000, guid: 00ea3162c7c9ba64b81d8deb6e108b41, type: 3}
+  - {fileID: 2800000, guid: 6d61bb3f8bf227746ac465917998ed84, type: 3}
+  - {fileID: 2800000, guid: c8c9711d106501a4fabb355adb2ada7e, type: 3}
+  - {fileID: 2800000, guid: 77d1d18b794b6cb4fb75c11173b7805b, type: 3}
   SpriteArmas1:
   - {fileID: 4942803658038726614, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
   - {fileID: -9004990608046106943, guid: 98a23e1bbcae34f1f91e1c8abaa0d79c, type: 3}
@@ -9887,7 +9915,7 @@ Transform:
   - {fileID: 2013900369}
   - {fileID: 1999450967}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &661793316
 GameObject:
@@ -9995,7 +10023,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &667183443
 GameObject:
@@ -10103,7 +10131,7 @@ Transform:
   - {fileID: 1863279295}
   - {fileID: 493671641}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &733512816
 GameObject:
@@ -10450,7 +10478,7 @@ Transform:
   - {fileID: 19328639}
   - {fileID: 1433419793}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &871873876
 MonoBehaviour:
@@ -10559,6 +10587,7 @@ MonoBehaviour:
   sprites: []
   spriteSheetName: Knight
   loadedSpriteSheetName: 
+  isPlayer: 0
 --- !u!4 &908693887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 281418892286547120, guid: bd93ade484c84d64690e5b37cc0faaef,
@@ -12292,7 +12321,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1134690543
 MonoBehaviour:
@@ -13093,27 +13122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1361930261 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6867966222528699273, guid: 1757cebfa83a24867834eccb774dd7b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6867966222035962851}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1361930262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361930261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11f8c6d7ed86df84f92a49c55b21b8fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites: []
-  spriteSheetName: Barbarian2
-  loadedSpriteSheetName: 
 --- !u!4 &1361930269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6867966222528699279, guid: 1757cebfa83a24867834eccb774dd7b5,
@@ -13387,6 +13395,128 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1516778673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516778675}
+  - component: {fileID: 1516778674}
+  - component: {fileID: 1516778676}
+  - component: {fileID: 1516778677}
+  m_Layer: 9
+  m_Name: Rune 01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1516778674
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516778673}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1936394933
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 159b7b8206633314fa89af30191c14d7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.32, y: 0.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1516778675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516778673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.096, y: -1.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1516778676
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516778673}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.32}
+  m_EdgeRadius: 0
+--- !u!114 &1516778677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516778673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e68034e0c9dde34ca57f38eab93b079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cenaDestino: cena2
 --- !u!1 &1529661199
 GameObject:
   m_ObjectHideFlags: 0
@@ -13667,8 +13797,8 @@ RectTransform:
   m_Children:
   - {fileID: 501907150}
   - {fileID: 625101951}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 565874679}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17543,7 +17673,7 @@ Transform:
   - {fileID: 1092389882}
   - {fileID: 1859465267}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2081960399
 GameObject:
@@ -18161,7 +18291,7 @@ PrefabInstance:
     - target: {fileID: 1027520770746768496, guid: c43737fa56ec7f04aa4f44d8aaecb48c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1027520770746768496, guid: c43737fa56ec7f04aa4f44d8aaecb48c,
         type: 3}
@@ -18197,16 +18327,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6867966222528699276, guid: 1757cebfa83a24867834eccb774dd7b5,
-        type: 3}
-      propertyPath: Luz2D
-      value: 
-      objectReference: {fileID: 2100000, guid: 87f8ab0ac71fb0b4bae682157cc03f57, type: 2}
-    - target: {fileID: 6867966222528699276, guid: 1757cebfa83a24867834eccb774dd7b5,
-        type: 3}
-      propertyPath: Padrao2D
-      value: 
-      objectReference: {fileID: 2100000, guid: 5a69ca150f9242c48af55e05c2fafec6, type: 2}
     - target: {fileID: 6867966222528699279, guid: 1757cebfa83a24867834eccb774dd7b5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18245,7 +18365,7 @@ PrefabInstance:
     - target: {fileID: 6867966222528699279, guid: 1757cebfa83a24867834eccb774dd7b5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6867966222528699279, guid: 1757cebfa83a24867834eccb774dd7b5,
         type: 3}

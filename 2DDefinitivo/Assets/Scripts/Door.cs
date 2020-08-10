@@ -37,7 +37,6 @@ public class Door : MonoBehaviour
             playerScript.ChangeMaterial(Padrao2D);
         }
         playerScript.transform.position = Destino.position;
-        yield return new WaitForSeconds(0.5f);
         playerScript.gameObject.SetActive(true);
         fade.FadeOut();
     }
