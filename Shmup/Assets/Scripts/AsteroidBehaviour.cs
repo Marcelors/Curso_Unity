@@ -8,6 +8,6 @@ public class AsteroidBehaviour : MonoBehaviour
     private void Update()
     {
         var vector = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), transform.position.z);
-        MoverComponent.DoMove(vector);
+        //MoverComponent.DoMove(vector);
     }
 }

@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    public void DoMove(Vector3 moveValue)
+    public Vector3 Direction;
+    public float Speed;
+
+    private void Update()
     {
-        transform.Translate(moveValue);
+        transform.Translate(Direction * Speed * Time.deltaTime);
     }
 }
